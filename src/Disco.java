@@ -45,6 +45,7 @@ public class Disco {
 
     @Override
     public String toString() {
-        return "Disco: " + titulo + ", Ano: " + anoLancamento + ", Artista: " + (artista != null ? artista.getNome() : "N/A");
+        return "Disco: " + titulo + ", Ano: " + anoLancamento + ", Artista: "
+                + (artista != null ? artista.getNome() : "N/A");
     }
 }

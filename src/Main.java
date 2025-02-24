@@ -109,7 +109,8 @@ public class Main {
                     String generoArtista = scanner.nextLine();
                     Artista novoArtista = new Artista(nomeArtista, generoArtista);
 
-                    boolean sucesso = modificacoesDisco.editarDisco(titulo, novoAnoLancamento, novasFaixas, novoArtista);
+                    boolean sucesso = modificacoesDisco.editarDisco(titulo, novoAnoLancamento, novasFaixas,
+                            novoArtista);
                     if (sucesso) {
                         System.out.println("Disco editado com sucesso!");
                     } else {

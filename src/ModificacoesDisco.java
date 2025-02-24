@@ -12,7 +12,8 @@ public class ModificacoesDisco implements IModificacoesDisco {
 
     @Override
     public boolean cadastrarDisco(String titulo, int anoLancamento, String[] faixas, Artista artista) {
-        if (titulo == null || titulo.isEmpty() || anoLancamento <= 0 || faixas == null || faixas.length == 0 || artista == null) {
+        if (titulo == null || titulo.isEmpty() || anoLancamento <= 0 || faixas == null || faixas.length == 0
+                || artista == null) {
             System.out.println("Erro: Dados inválidos para o disco.");
             return false;
         }
@@ -64,7 +65,8 @@ public class ModificacoesDisco implements IModificacoesDisco {
             for (Disco disco : discos) {
                 System.out.println("Título: " + disco.getTitulo());
                 System.out.println("Ano: " + disco.getAnoLancamento());
-                System.out.println("Artista: " + (disco.getArtista() != null ? disco.getArtista().getNome() : "Nenhum"));
+                System.out
+                        .println("Artista: " + (disco.getArtista() != null ? disco.getArtista().getNome() : "Nenhum"));
                 System.out.println("Faixas: ");
                 for (String faixa : disco.getFaixas()) {
                     System.out.println(" - " + faixa);
