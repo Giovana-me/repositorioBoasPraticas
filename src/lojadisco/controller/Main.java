@@ -1,8 +1,20 @@
+package lojadisco.controller;
+
 import java.util.Scanner;
+
+import lojadisco.model.Artista;
+import lojadisco.service.ICadastroDisco;
+import lojadisco.service.IConsultaDisco;
+import lojadisco.service.IGerenciamentoDisco;
+import lojadisco.service.CadastroDisco;
+import lojadisco.service.ConsultaDisco;
+import lojadisco.service.GerenciamentoDisco;
 
 public class Main {
     public static void main(String[] args) {
-        IModificacoesDisco modificacoesDisco = new ModificacoesDisco();
+        ICadastroDisco cadastroDisco = new CadastroDisco();
+        IConsultaDisco consultaDisco = new ConsultaDisco();
+        IGerenciamentoDisco gerenciamentoDisco = new GerenciamentoDisco();
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -40,7 +52,7 @@ public class Main {
                     String generoArtista = scanner.nextLine();
                     Artista artista = new Artista(nomeArtista, generoArtista);
 
-                    boolean sucesso = modificacoesDisco.cadastrarDisco(titulo, anoLancamento, faixas, artista);
+                    boolean sucesso = cadastroDisco.cadastrarDisco(titulo, anoLancamento, faixas, artista);
                     if (sucesso) {
                         System.out.println("Disco cadastrado com sucesso!");
                     } else {
@@ -56,23 +68,23 @@ public class Main {
                     String genero = scanner.nextLine();
                     Artista artista = new Artista(nomeArtista, genero);
 
-                    boolean sucesso = modificacoesDisco.associarArtista(tituloDisco, artista);
+                    boolean sucesso = gerenciamentoDisco.associarArtista(tituloDisco, artista);
                     if (sucesso) {
                         System.out.println("Artista associado com sucesso ao disco.");
                     } else {
                         System.out.println("Erro ao associar artista.");
                     }
                 }
-                case 3 -> modificacoesDisco.listarDiscos();
-                case 4 -> modificacoesDisco.mostrarDetalhesDiscos();
-                case 5 -> modificacoesDisco.listarArtistas();
+                case 3 -> consultaDisco.listarDiscos();
+                case 4 -> consultaDisco.mostrarDetalhesDiscos();
+                case 5 -> consultaDisco.listarArtistas();
                 case 6 -> {
                     System.out.print("Digite o nome do artista: ");
                     String nome = scanner.nextLine();
                     System.out.print("Digite o gênero do artista: ");
                     String genero = scanner.nextLine();
 
-                    boolean sucesso = modificacoesDisco.cadastrarArtista(nome, genero);
+                    boolean sucesso = cadastroDisco.cadastrarArtista(nome, genero);
                     if (sucesso) {
                         System.out.println("Artista cadastrado com sucesso!");
                     } else {
@@ -82,7 +94,7 @@ public class Main {
                 case 7 -> {
                     System.out.print("Digite o título do disco a ser removido: ");
                     String titulo = scanner.nextLine();
-                    boolean sucesso = modificacoesDisco.removerDisco(titulo);
+                    boolean sucesso = gerenciamentoDisco.removerDisco(titulo);
                     if (sucesso) {
                         System.out.println("Disco removido com sucesso!");
                     } else {
@@ -109,7 +121,7 @@ public class Main {
                     String generoArtista = scanner.nextLine();
                     Artista novoArtista = new Artista(nomeArtista, generoArtista);
 
-                    boolean sucesso = modificacoesDisco.editarDisco(titulo, novoAnoLancamento, novasFaixas,
+                    boolean sucesso = gerenciamentoDisco.editarDisco(titulo, novoAnoLancamento, novasFaixas,
                             novoArtista);
                     if (sucesso) {
                         System.out.println("Disco editado com sucesso!");

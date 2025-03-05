@@ -1,3 +1,4 @@
+package lojadisco.model;
 public class Disco {
     private String titulo;
     private int anoLancamento;
